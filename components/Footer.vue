@@ -1,22 +1,22 @@
 <template>
-  <footer class="w-full h-[300px] bg-main b-0 flex justify-center">
-    <img src="/Logo.png" alt="" class="w-[200px] h-[60px] my-5"> 
-    <div class="w-1/4 flex justify-end">
-        <nuxt-link
-          to="/kataxorisi_katastimatos"
-          class="border-2 border-secondary p-4"
-          >ΔΩΡΕΑΝ εγγραφή καταστήματος</nuxt-link
-        >
-      </div>  
+  <footer
+    class="w-full h-[300px] bg-main b-0 flex flex-col content-center items-center justify-between py-4"
+  >
+    <div class="flex flex-col justify-center content-center items-center w-full">
+      <img src="/Logo.png" alt="" class="w-[200px] h-[60px] my-5" />
+      <p class="flex font-medium text-lg text-white">Ο πιο ολοκληρωμένος οδηγός της πόλης μας !</p>
+    </div>
+
+    <div class="flex justify-end">
+      <nuxt-link
+        to="/kataxorisi_katastimatos"
+        class="border-2 border-secondary bg-secondary text-white p-4"
+        >ΔΩΡΕΑΝ εγγραφή καταστήματος</nuxt-link
+      >
+    </div>
   </footer>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
-
-<style>
-
-</style>

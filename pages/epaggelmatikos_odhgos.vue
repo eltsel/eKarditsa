@@ -16,8 +16,8 @@
         <div
           class="lg:w-[70%] flex flex-wrap justify-evenly w-full content-center items-center mx-auto my-14"
         >
-          <a
-            href="#"
+          <nuxt-link
+            to="/estiasi"
             class="lg:w-[200px] group bg-white shadow-md w-full h-44 flex flex-col justify-center content-center items-center"
           >
             <span
@@ -25,13 +25,13 @@
               >local_cafe</span
             >
             <h2
-              class="h-14 flex items-center font-medium text-main group-hover:text-secondary "
+              class="h-14 flex items-center font-medium text-main group-hover:text-secondary"
             >
               ΕΣΤΙΑΣΗ
             </h2>
-          </a>
-          <a
-            href="#"
+          </nuxt-link>
+          <nuxt-link
+            to="#"
             class="group bg-white shadow-md w-[200px] h-44 flex flex-col justify-center content-center items-center"
           >
             <span
@@ -43,7 +43,7 @@
             >
               ΥΠΗΡΕΣΙΕΣ
             </h2>
-          </a>
+          </nuxt-link>
           <a
             href="#"
             class="group bg-white shadow-md w-[200px] h-44 flex flex-col justify-center content-center items-center"
@@ -99,6 +99,7 @@
             προσεκτικά από τα μέλη μας.
           </p>
         </div>
+
         <!-- shop_card -->
         <div
           class="flex justify-center content-center items-center w-full my-2"
@@ -106,13 +107,13 @@
           <div class="flex justify-center content-center items-center">
             <div
               class="flex justify-center content-start flex-col w-80 p-4 border my-4 mr-5 hover:shadow-lg"
-              v-for="s in stores"
+              v-for="s in stores.slice(0,4)"
               :key="s._id"
             >
               <img
-                :src="s.picture"
+                :src="s.logo"
                 alt=""
-                class="w-full h-52 object-cover mx-auto sticky top-0"
+                class="w-full h-52 mx-auto sticky top-0 object-contain"
               />
               <p class="my-2 text-gray-500 text-xs">{{ s.activity }}</p>
 
@@ -132,16 +133,17 @@
                 <span class="text-sm">{{ s.store_address }}</span>
               </div>
               <hr class="my-4 divide-y divide-blue-200" />
-              <button class="flex justify-end text-main">Περισσότερα ></button>
+              <nuxt-link :to="`/company/${s._id}`" class="flex justify-end text-main">Περισσότερα ></nuxt-link>
             </div>
           </div>
         </div>
+
         <!-- new_entry -->
         <div class="flex justify-center w-full">
           <nuxt-link
             to="/kataxorisi_katastimatos"
             class="bg-main text-white p-5 m-10 rounded-sm hover:text-secondary"
-            >ΔΩΡΕΑΝ καταχώρηση</nuxt-link
+            >Κάνε ΔΩΡΕΑΝ καταχώρηση!</nuxt-link
           >
         </div>
       </div>
@@ -184,11 +186,11 @@ export default {
       console.log(test);
     },
     async getStores() {
-      let stores = await this.$axios.$get(`/api/stores`);
+      let stores = await this.$axios.$post(`http://localhost:5002/stores`,{sort:"created"});
       console.log(stores);
       this.stores = stores;
     },
-  }
+  },
 };
 </script>
 

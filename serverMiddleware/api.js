@@ -60,14 +60,17 @@ function fileSize(fileSize){
 }
 app.post("/upload", async (req, res) => {
   try {
-    for (const file of req.files) {
+    const {file} = req.files
+      console.log(__dirname)
       if(file.size>1000*1024){
-        continue;
+        res.status(400).send("size")
       }
-      console.log(req.files);
-    }
-    res.send(req.body)
+      console.log(file)
+      file.mv("./static/uploads/"+file.name)
+
+    res.send("/uploads/"+file.name)
   } catch (error) {
+    console.log(error)
     res.status(500).send(error);
   }
 });

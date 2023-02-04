@@ -63,7 +63,15 @@
           <p class="text-lg text-main py-5 mt-10">
             Ανεβάστε φωτογραφία με το logo της επιχείρησης σας
           </p>
-          <input type="file" id="img" name="img" accept="image/*" />
+          <input
+            type="file"
+            id="img"
+            name="img"
+            accept="image/*"
+          />
+          <span v-show="errors.includes('logo')" class="text-red-400 text-sm"
+            >Υποχρεωτικό πεδίο</span
+          >
           <!--<p class="text-lg text-main py-5 mt-10">
             Ανεβάστε 1-3 φωτογραφίες του χώρου της επιχειρήσεις σας
           </p>
@@ -75,7 +83,27 @@
             name="files"
             multiple 
           />
-          --><br /><br />
+          -->
+          <br /><br />
+          <select
+            v-model="newEntryInfo.category"
+            class="p-2"
+            :class="{
+              '!border-red-400': errors.includes('category'),
+            }"
+          >
+            <option value="">Κατηγορία καταστήματος</option>
+            <option value="ΕΣΤΙΑΣΗ">ΕΣΤΙΑΣΗ</option>
+            <option value="ΥΠΗΡΕΣΙΕΣ">ΥΠΗΡΕΣΙΕΣ</option>
+            <option value="ΚΑΤΑΣΤΗΜΑΤΑ">ΚΑΤΑΣΤΗΜΑΤΑ</option>
+            <option value="ΥΓΕΙΑ">ΥΓΕΙΑ</option>
+            <option value="ΔΙΑΜΟΝΗ">ΔΙΑΜΟΝΗ</option>
+          </select>
+          <span
+            v-show="errors.includes('category')"
+            class="text-red-400 text-sm"
+            >Υποχρεωτικό πεδίο</span
+          >
         </div>
         <div class="flex flex-col m-4">
           <p class="text-lg text-main">Τα στοιχεία της επιχείρησης σας</p>
@@ -89,9 +117,7 @@
               '!border-red-400': errors.includes('company'),
             }"
           />
-          <span
-            v-show="errors.includes('company')"
-            class="text-red-400 text-sm"
+          <span v-show="errors.includes('company')" class="text-red-400 text-sm"
             >Υποχρεωτικό πεδίο</span
           >
           <input
@@ -210,21 +236,26 @@
 </template>
 
 <script>
+import Vue from "vue";
+import VueSweetalert2 from "vue-sweetalert2";
+import "sweetalert2/dist/sweetalert2.min.css";
+
 export default {
   data() {
     return {
       newEntryInfo: {
-        full_name: "",
-        phone: "",
-        email: "",
-        company: "",
-        activity: "",
-        site: "",
-        store_phone: "",
-        store_email: "",
-        store_address: "",
-        city_code: "",
-        store_description: ""
+        full_name: "eleni",
+        phone: "6944355958",
+        email: "elenitselioy15@gmail.com",
+        company: "Walmart",
+        activity: "store",
+        site: "www.walmart.com",
+        store_phone: "2100000000",
+        store_email: "hello@walmart.com",
+        store_address: "Sacramento",
+        city_code: "95829",
+        store_description: "Shop Walmart.com today for Every Day Low Prices. Join Walmart+ for unlimited free delivery from your store & free shipping with no order minimum.",
+        category: "ΚΑΤΑΣΤΗΜΑΤΑ",
       },
       errors: [],
     };
@@ -243,6 +274,7 @@ export default {
         store_address: "",
         city_code: "",
         store_description: "",
+        category: "",
       };
     },
     fileHandleKati(e) {
@@ -255,15 +287,36 @@ export default {
       if (!this.objectCheck(this.newEntryInfo)) {
         return;
       }
+
+      let fileinput=document.querySelector("#img")
+      if(fileinput.files){
+        let f = await this.upload(fileinput.files);
+        if(!f){
+          return;
+        }
+        else{
+          this.newEntryInfo.logo=f;
+        }
+      }
       try {
         let payload = this.newEntryInfo;
         let response = await this.$axios.post(
-          "/api/stores",
+          "http://localhost:5002/",
           payload
         );
-        this.initNewEntry()
+        
+        this.initNewEntry();
+        this.$swal.fire(
+          "Επιτυχής αποστολή!",
+          "Θα ενημερωθείτε σύντομα στο email επικοινωνίας που καταχωρήσατε, για την εξέλιξη του αιτήματος σας! ",
+          "success"
+        );
       } catch (error) {
-        alert(error)
+        this.$swal.fire({
+          icon: "error",
+          title: "Ωχ...",
+          text: "Κάτι πήγε στραβά, δοκίμασε ξανά αλλιώς επικοινώνησε μαζί μας!",
+        });
       }
     },
     objectCheck(obj) {
@@ -283,7 +336,7 @@ export default {
       } else {
         this.errors = [];
       }
-      console.log(obj,valid);
+      console.log(obj, valid);
       return valid;
     },
     async upload(files) {
@@ -292,12 +345,17 @@ export default {
       for (const f of files) {
         form.append("file", f);
       }
-      let res = await this.$axios.post(`/api/upload`, form, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      console.log(res);
+      try {
+        let res = await this.$axios.$post(`/api/upload`, form, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        return res;
+      } catch (error) {
+        
+      }
+      return false;
     },
     async formSubmit() {},
   },

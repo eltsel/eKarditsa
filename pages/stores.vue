@@ -1,15 +1,66 @@
 <template>
   <div>
     <div class="flex flex-wrap">
-      <input class="border m-2 p-1" type="text" v-model="newStore.company" placeholder="name" />
-      <input class="border m-2 p-1" type="text" v-model="newStore.store_address" placeholder="address" />
-      <input class="border m-2 p-1" type="text" v-model="newStore.location" placeholder="location" />
-      <input class="border m-2 p-1" type="tel" v-model="newStore.store_phone" placeholder="phone" />
-      <input class="border m-2 p-1" type="email" v-model="newStore.store_email" placeholder="email" />
-      <input class="border m-2 p-1" type="url" v-model="newStore.site" placeholder="site" />
-      <input class="border m-2 p-1" type="text" v-model="newStore.activity" placeholder="activity" />
-      <input class="border m-2 p-1" type="text" v-model="newStore.store_description" placeholder="description" />
-      <input class="border m-2 p-1" type="text" v-model="newStore.logo" placeholder="logo" />
+      <input
+        class="border m-2 p-1"
+        type="text"
+        v-model="newStore.company"
+        placeholder="name"
+      />
+      <input
+        class="border m-2 p-1"
+        type="text"
+        v-model="newStore.store_address"
+        placeholder="address"
+      />
+      <input
+        class="border m-2 p-1"
+        type="text"
+        v-model="newStore.location"
+        placeholder="location"
+      />
+      <input
+        class="border m-2 p-1"
+        type="tel"
+        v-model="newStore.store_phone"
+        placeholder="phone"
+      />
+      <input
+        class="border m-2 p-1"
+        type="email"
+        v-model="newStore.store_email"
+        placeholder="email"
+      />
+      <input
+        class="border m-2 p-1"
+        type="url"
+        v-model="newStore.site"
+        placeholder="site"
+      />
+      <input
+        class="border m-2 p-1"
+        type="text"
+        v-model="newStore.activity"
+        placeholder="activity"
+      />
+      <input
+        class="border m-2 p-1"
+        type="text"
+        v-model="newStore.store_description"
+        placeholder="description"
+      />
+      <input
+        class="border m-2 p-1"
+        type="text"
+        v-model="newStore.logo"
+        placeholder="logo"
+      />
+      <input
+        class="border m-2 p-1"
+        type="text"
+        v-model="newStore.category"
+        placeholder="category"
+      />
 
       <button @click="createStore()">Create store</button>
     </div>
@@ -22,11 +73,7 @@
         v-for="s in stores"
         :key="s._id"
       >
-        <img
-          :src="s.logo"
-          alt=""
-          class="w-full h-32 object-cover"
-        />
+        <img :src="s.logo" alt="" class="w-full h-32 object-cover" />
         <h1 class="font-bold text-2xl">{{ s.company }}</h1>
         <h1 class="">{{ s.store_address }}</h1>
       </div>
@@ -39,29 +86,8 @@ export default {
   data() {
     return {
       stores: [],
-      newStore: { full_name: "", 
-      phone: "",
-      email: "",
-      company: "",
-      activity: "",
-      site: "",
-      store_phone: "",
-      store_email: "",
-      store_address: "",
-      city_code: "",
-      store_description: ""
-    },
-    };
-  },
-  mounted() {
-    this.getStores();
-    this.updateStores('6370faeb6f6951a4f12c6895')
-  },
-  methods: {
-    async createStore() {
-      let creation = await this.$axios.post(`/api/stores`, this.newStore);
-      this.newStore = { 
-        full_name: "", 
+      newStore: {
+        full_name: "",
         phone: "",
         email: "",
         company: "",
@@ -71,7 +97,31 @@ export default {
         store_email: "",
         store_address: "",
         city_code: "",
-        store_description: ""
+        store_description: "",
+        store_category: "",
+      },
+    };
+  },
+  mounted() {
+    this.getStores();
+    this.updateStores("6370faeb6f6951a4f12c6895");
+  },
+  methods: {
+    async createStore() {
+      let creation = await this.$axios.post(`/api/stores`, this.newStore);
+      this.newStore = {
+        full_name: "",
+        phone: "",
+        email: "",
+        company: "",
+        activity: "",
+        site: "",
+        store_phone: "",
+        store_email: "",
+        store_address: "",
+        city_code: "",
+        store_description: "",
+        store_category: "",
       };
       this.getStores();
     },
