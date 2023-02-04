@@ -8,7 +8,7 @@ const storeSchema = require("../schemas/storeSchema");
 const Store = mongoose.model("Store", storeSchema);
 const fs = require("fs");
 const helpers = require("../serverHelpers/googleNews")
-
+mongoose.set('strictQuery', true);
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(fileUpload());
