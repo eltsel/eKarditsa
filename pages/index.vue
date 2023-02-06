@@ -133,7 +133,7 @@
         </nuxt-link>
         <div
           class="rounded-full w-[300px] h-[300px] flex justify-center content-center items-center text-white bg-cover bg-main backdrop-opacity-50 mx-6 my-5"
-          style="background-image: url(/Pictures/plateia.jpg)"
+          style="background-image: url(/Pictures/plateia.JPG)"
         >
           <nuxt-link to="/perioxi" class="bg-[#3a4c40]/90 backdrop-opacity-50">
             <span
