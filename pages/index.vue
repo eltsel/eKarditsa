@@ -169,7 +169,7 @@
       <div
         class="flex lg:justify-center lg:content-center justify-start items-center w-full my-2 overflow-x-auto"
       >
-        <div class="flex justify-center content-center items-center">
+        <div class="flex justify-center content-center items-center ml-4">
           <shopCard :s="s" v-for="s in stores.slice(0, 4)" :key="s._id" />
         </div>
       </div>

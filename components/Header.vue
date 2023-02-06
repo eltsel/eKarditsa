@@ -1,11 +1,11 @@
 <template>
   <header>
     <div class="bg-main w-full h-[95px] text-white flex items-center px-5">
-      <div class="w-[80px] lg:px-5 px-2">
+      <div class="lg:w-[100px] w-[50px] lg:px-5 px-2">
         <button>
           <lottie-player
             @click="toggle"
-            style="width: 40px; filter: invert(100%)"
+            style="width: 30px; filter: invert(100%)"
             src="https://assets5.lottiefiles.com/packages/lf20_ioaivu7n.json"
             speed="1"
             debug
@@ -13,14 +13,14 @@
         </button>
       </div>
 
-      <div class="flex-1 flex justify-center">
-        <a href="/"><img src="/Logo.png" alt="" class="object-contain" /></a>
+      <div class="flex-1 flex justify-center px-4">
+        <a href="/"><img src="/Logo.png" alt="logo.png" class="object-contain h-16 lg:h-20" /></a>
       </div>
-      <div class="w-[80px] flex lg:flex-row flex-col lg:items-end lg:justify-end items-end">
-        <img :src="icons" alt="" class="w-[40px] hidden lg:flex"/>
-        <div class="flex flex-col items-end text-end">
-          <p class="text-sm">Καιρός</p>
-          <p class="lg:px-10 font-bold">{{ temp }} °C</p>
+      <div class="flex lg:w-[100px] w-[50px]">
+        <img :src="icons" alt="" class="w-[40px] hidden lg:flex lg:mr-10"/>
+        <div class="flex flex-col lg:mr-10">
+          <p class="text-sm flex">Καιρός</p>
+          <p class="font-bold flex">{{ temp }} °C</p>
         </div>
       </div>
     </div>
