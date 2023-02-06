@@ -1,29 +1,16 @@
 <template>
   <div>
     <main
-      class="w-[80%] mx-auto flex flex-col justify-center content-center items-center"
+      class="lg:w-[80%] mx-auto flex flex-col justify-center content-center items-center"
     >
       <!-- first-picture -->
-      <div class="flex flex-col my-10 relative">
-        <img src="/Pictures/peacock.png" alt="" />
-        <h1
-          class="w-fit flex absolute top-[15%] text-[6rem] mx-20 text-gray-800 font-bold"
-        >
-          ΚΑΡΔΙΤΣΑ
-        </h1>
-        <h2
-          class="w-fit flex absolute top-[35%] font-medium text-[2rem] mx-20 w-full text-gray-800"
-        >
-          Ο,ΤΙ ΧΡΕΙΑΖΕΤΑΙ ΝΑ ΞΕΡΕΙΣ
-        </h2>
-        <span
-          class="w-fit flex absolute top-[40%] font-medium text-[2rem] mx-20 w-full text-gray-800"
-          >ΓΙΑ ΤΗΝ ΠΟΛΗ ΜΑΣ.</span
-        >
+      <div class="flex flex-col lg:my-10 my-5 relative">
+        <img src="/Pictures/karditsa-first.jpg" alt="" />
       </div>
       <!-- useful-categories -->
-      <span class="flex mx-auto text-3xl font-medium text-gray-800 pb-16"
-        >ΧΡΗΣΙΜΕΣ ΚΑΤΗΓΟΡΙΕΣ</span
+      <span
+        class="flex mx-auto lg:text-3xl text-2xl font-medium text-gray-800 lg:pb-16"
+        >Χρήσιμες Κατηγορίες</span
       >
       <div
         class="flex w-full justify-center content-center items-center mx-auto flex-wrap"
@@ -80,22 +67,22 @@
       </div>
       <!-- city-numbers -->
       <div
-        class="w-full my-[140px] bg-fixed h-[380px] bg-no-repeat bg-cover flex"
+        class="w-full lg:my-[140px] my-[60px] bg-fixed lg:h-[380px] lg:bg-no-repeat bg-cover flex"
         style="background-image: url(/Pictures/parko.jpg)"
       >
         <div
-          class="w-full h-[380px] bg-[#3a4c40]/90 backdrop-opacity-50 flex py-[30px] flex-col"
+          class="flex flex-wrap w-full lg:h-[380px] bg-[#3a4c40]/90 backdrop-opacity-50 py-[30px]"
         >
-          <div class="flex w-full justify-center content-center">
-            <p class="font-bold text-4xl text-white mb-[20px]">
+          <div class="flex w-full justify-center content-center my-auto">
+            <p class="font-bold lg:text-4xl text-3xl text-white my-[20px]">
               Η Καρδίτσα σε νούμερα
             </p>
           </div>
           <div
-            class="w-full flex justify-center content-center items-center my-auto py-5"
+            class="w-full flex lg:flex-row flex-col justify-center content-center items-center my-auto py-5"
           >
             <div
-              class="flex content-center justify-center flex-col w-[280px] h-[180px] backdrop-opacity-50 bg-white/70 mx-5"
+              class="flex content-center justify-center flex-col lg:w-[280px] lg:h-[180px] w-[200px] h-[120px] backdrop-opacity-50 bg-white/70 mx-5"
             >
               <span class="flex justify-center text-main text-2xl h-16"
                 >Πληθυσμός</span
@@ -106,7 +93,7 @@
               >
             </div>
             <div
-              class="flex content-center justify-center flex-col w-[280px] h-[180px] backdrop-opacity-50 bg-white/70 mx-5"
+              class="flex content-center justify-center flex-col lg:w-[280px] lg:h-[180px] w-[200px] h-[120px] backdrop-opacity-50 bg-white/70 mx-5 my-5"
             >
               <span class="flex justify-center text-main text-2xl h-16"
                 >Έκταση</span
@@ -117,7 +104,7 @@
               >
             </div>
             <div
-              class="flex content-center justify-center flex-col w-[280px] h-[180px] backdrop-opacity-50 bg-white/70 mx-5"
+              class="flex content-center justify-center flex-col lg:w-[280px] lg:h-[180px] w-[200px] h-[120px] backdrop-opacity-50 bg-white/70 mx-5"
             >
               <span class="flex justify-center text-main text-2xl h-16"
                 >Δήμοι</span
@@ -131,10 +118,10 @@
         </div>
       </div>
       <!-- rounded-categories -->
-      <div class="flex justify-center content-center mb-[150px]">
+      <div class="flex justify-center content-center flex-wrap">
         <nuxt-link
           to="/istoria"
-          class="rounded-full w-[300px] h-[300px] flex justify-center content-center items-center text-white bg-cover mx-10"
+          class="rounded-full w-[300px] h-[300px] flex justify-center content-center items-center text-white bg-cover mx-10 my-5"
           style="background-image: url(/Pictures/istoria.jpg)"
         >
           <div class="bg-[#3a4c40]/90 backdrop-opacity-50">
@@ -145,7 +132,7 @@
           </div>
         </nuxt-link>
         <div
-          class="rounded-full w-[300px] h-[300px] flex justify-center content-center items-center text-white bg-cover bg-main backdrop-opacity-50 mx-6"
+          class="rounded-full w-[300px] h-[300px] flex justify-center content-center items-center text-white bg-cover bg-main backdrop-opacity-50 mx-6 my-5"
           style="background-image: url(/Pictures/plateia.jpg)"
         >
           <nuxt-link to="/perioxi" class="bg-[#3a4c40]/90 backdrop-opacity-50">
@@ -171,49 +158,19 @@
         </div>
       </div>
       <!--Last entries -->
-      <div
-        class="flex flex-wrap justify-center content-center items-center flex-col w-full"
-      >
-        <h2 class="flex mx-auto text-3xl font-medium text-gray-800 pb-8">
+      <div class="flex w-full my-[40px] justify-center text-center">
+        <p
+          class="flex lg:text-3xl text-2xl font-medium text-gray-800 text-center"
+        >
           Τελευταίες καταχωρήσεις καταστημάτων
-        </h2>
+        </p>
       </div>
-      <div class="flex justify-center content-center items-center w-full">
+      <!-- shop_card -->
+      <div
+        class="flex lg:justify-center lg:content-center justify-start items-center w-full my-2 overflow-x-auto"
+      >
         <div class="flex justify-center content-center items-center">
-          <div
-            class="flex justify-center content-start flex-col w-80 p-4 border my-4 mr-5 hover:shadow-lg"
-            v-for="s in stores.slice(0, 4)"
-            :key="s._id"
-          >
-            <img
-              :src="s.logo"
-              alt=""
-              class="w-full h-52 mx-auto sticky top-0 object-contain"
-            />
-            <p class="my-2 text-gray-500 text-xs">{{ s.activity }}</p>
-
-            <p class="font-medium text-2xl">{{ s.company }}</p>
-            <p
-              class="desc text-sm text-gray-500 mt-2 h-24 overflow-x-auto h-[40px]"
-            >
-              {{ s.store_description }}
-            </p>
-
-            <div class="flex text-sm text-gray-500 mt-4 items-end">
-              <span class="material-symbols-outlined text-md text-secondary"
-                >location_on</span
-              >
-              <span class="text-sm ml-2">{{ s.store_address }}</span>
-              <span>, </span>
-              <span class="text-sm">{{ s.city_code }}</span>
-            </div>
-            <hr class="my-4 divide-y divide-blue-200" />
-            <nuxt-link
-              :to="`/company/${s._id}`"
-              class="flex justify-end text-main"
-              >Περισσότερα ></nuxt-link
-            >
-          </div>
+          <shopCard :s="s" v-for="s in stores.slice(0, 4)" :key="s._id" />
         </div>
       </div>
     </main>

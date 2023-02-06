@@ -1,7 +1,7 @@
 <template>
   <header>
     <div class="bg-main w-full h-[95px] text-white flex items-center px-5">
-      <div class="w-1/3 px-5">
+      <div class="w-[80px] lg:px-5 px-2">
         <button>
           <lottie-player
             @click="toggle"
@@ -13,14 +13,14 @@
         </button>
       </div>
 
-      <div class="w-1/3 flex justify-center">
-        <a href="/"><img src="/Logo.png" alt="" class="w-72" /></a>
+      <div class="flex-1 flex justify-center">
+        <a href="/"><img src="/Logo.png" alt="" class="object-contain" /></a>
       </div>
-      <div class="w-1/3 flex items-end justify-end">
-        <img :src="icons" alt="" />
-        <div class="flex flex-col items-center">
+      <div class="w-[80px] flex lg:flex-row flex-col lg:items-end lg:justify-end items-end">
+        <img :src="icons" alt="" class="w-[40px] hidden lg:flex"/>
+        <div class="flex flex-col items-end text-end">
           <p class="text-sm">Καιρός</p>
-          <p class="px-10 font-bold">{{ temp }} °C</p>
+          <p class="lg:px-10 font-bold">{{ temp }} °C</p>
         </div>
       </div>
     </div>
