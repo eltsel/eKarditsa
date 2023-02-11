@@ -301,7 +301,7 @@ export default {
       try {
         let payload = this.newEntryInfo;
         let response = await this.$axios.post(
-          "http://localhost:5002/",
+          "http://api.ekarditsa.gr/",
           payload
         );
         

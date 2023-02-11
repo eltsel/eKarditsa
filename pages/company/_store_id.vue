@@ -88,7 +88,7 @@ export default {
   },
   methods: {
     async getStores() {
-      let stores = await this.$axios.$post(`http://localhost:5002/stores`, {
+      let stores = await this.$axios.$post(`http://api.ekarditsa.gr/stores`, {
         id: this.$route.params.store_id,
       });
       console.log(stores);
