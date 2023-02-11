@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     async getStores() {
-      let stores = await this.$axios.$post(`http://api.ekarditsa.gr/stores`, {
+      let stores = await this.$axios.$post(`https://api.ekarditsa.gr/stores`, {
         category: "ΕΣΤΙΑΣΗ",
       });
       console.log(stores);
